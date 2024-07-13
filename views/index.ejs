@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css"> <!-- Corrected path to CSS file -->
+    <title>Weather App</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Include Font Awesome for icons -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Weather App Using Node JS</h1>
+
+        <form action="/weather" method="GET">
+            <input type="text" name="city" placeholder="Enter city name">
+            <button type="submit">Get Weather</button>
+        </form>
+        <div class="condition">
+
+            <% if (error) { %>
+                <p class="error">
+                    <%= error %>
+                </p>
+                <% } else if (weather) { %>
+                    <div class="card">
+                        
+                    <p>
+                           
+                        <i class="fas fa-thermometer-half" ></i>
+                        Temperature: <%= weather.main.temp %> &deg;F
+                        </p>
+                        <p>
+                            <i class="fas fa-tint"></i> <!-- Changed to humidity icon -->
+                            Humidity: <%= weather.main.humidity %> %
+                        </p>
+                        <p>
+                            <i class="fas fa-cloud"></i>
+                            Weather: <%= weather.weather[0].main %>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Country: <%= weather.name %>, <%= weather.sys.country %>
+                        </p>
+                    </div>
+        </div>
+        <% } %>
+    </div>
+</body>
+
+</html>
